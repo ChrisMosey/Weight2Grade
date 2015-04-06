@@ -5,7 +5,6 @@
 		Chris Mosey		 2015.03.31: created
 		Daniel Franz	 2015.04.01: combined database & createDb
 */
-
 /****************************
  *	   GLOBAL VARIABLES 	*
  ****************************/

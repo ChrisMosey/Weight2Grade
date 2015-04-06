@@ -460,7 +460,7 @@ function buildAssignmentHeader(item, total, weight, achieved, lost, comp){
 	var li2 = '<li data-icon="false"><a class="ui-link-inherit not-active">'
 			+ 	'<h2 style="float:left" id="Name">' + item.ass_name + '</h2>'
 			+	'<h2 style="float:right"><span class="small">Weight:</span><span id="Weight">'+ item.weight_total +' / '+ weight +'</span></h2>'
-			+	'</a><a id="editTaskBtn" onclick="toggleEditForm(false);return false">Edit Task</a>'
+			+	'</a><a id="editTaskBtn" onclick="toggleEditForm(false);">Edit Task</a>'
 			+ '</li>';
 	// append assignment item and refresh list
 	$("#assView ul.addToHead").append(li2);
