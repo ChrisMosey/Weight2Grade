@@ -153,7 +153,7 @@ function tblAssignmentDelete(onSuccess, onFail) {
 function tblAssignmentList(callbackFunc) { //read
 	var classId = localStorage.getItem("classID");
 	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM tblAssignment WHERE class_id = ? ORDER BY date_due DESC;", [classId], callbackFunc, fail);
+		tx.executeSql("SELECT * FROM tblAssignment WHERE class_id = ? ORDER BY date_due ASC;", [classId], callbackFunc, fail);
 	});
 }
 function tblAssignmentRead(callbackFunc) { //read

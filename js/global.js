@@ -8,7 +8,9 @@
 /****************************
  *		DOCUMENT READY		*
  ****************************/
-$(document).ready(function() {	
+$(document).ready(function() {
+	// turn off all animations
+	//jQuery.fx.off = true;
 	//{ DATABASE
 	// check if setup is complete
 	var setup_complete = localStorage.getItem("setup");
@@ -281,10 +283,10 @@ function handleAddAssForm() {
 //{ Add Ass dependences
 function addAssSuccess(tx, result) {
 	var id = result.rows.item(0).id;
-	setAssId(id);
 	$('#assAdd').trigger("reset");
 	toggleTaskForm(true);
-	$.mobile.changePage("index.html#assView");
+	displayClass();
+	$('#showOnAdd').collapsible("expand");
 }
 function addAssFail(tx, result) {
 	alert("There was a problem adding the assignment.\nERROR MESSAGE: " + result.message);
@@ -432,12 +434,12 @@ function buildAssignmentHeader(item, total, weight, achieved, lost, comp){
 			   + itemTotal + '</div>';
 	if(isMarked){
 		itemAchieved = Math.ceil(itemTotal * item.weight_achieved);
-		itemLost = itemTotal - itemAchieved;
+		itemLost = item.is_bonus == 'true' ? 0 : itemTotal - itemAchieved;
 		achieved -= itemAchieved;
 		lost -= itemLost;
 		centerBars = '<div style="height:20px;margin-left:' + achieved + '%;position:absolute;width: '+ itemAchieved +'%" role="progressbar" class="progress-bar progress-bar-info">'
 				   + itemAchieved + '</div>'
-				   + '<div style="float: right; width: '+ itemLost +'%" role="progressbar" class="progress-bar progress-bar-alert">'
+				   + '<div style="float: right; height:20px;right:' + lost + '%;position:absolute;width: '+ itemLost +'%" role="progressbar" class="progress-bar progress-bar-alert">'
 				   + itemLost + '</div>'
 	}
 	
@@ -474,8 +476,11 @@ function buildAssignmentHeader(item, total, weight, achieved, lost, comp){
 	$("#editAssDesc").val(item.ass_description);
 	$("#editAssDate").val(item.date_due);
 	$("#editAssSubm").val(item.date_submitted);
+	$("#submitAssDate").val(getTodayDate());
 	$("#editAssGrade").val(Math.ceil(item.weight_achieved * 100));
 	$("#editAssGrade").slider("refresh");
+	$("#recordAssGrade").val(55);
+	$("#recordAssGrade").slider("refresh");
 	$("#editAssWeight").val(item.weight_total);
 	
 	// set the late label
@@ -607,20 +612,3 @@ $(document).on("collapsibleexpand", function() {
 	$(".circle").circleProgress("redraw");
 });
 //}
-
-//{ Garbage?
-/*$("#markedAssList > li > a").hover(function() {
-	// on enter
-	$("#hoverGrade2").show();
-	var weight = parseInt($(this).find(".circle").attr('data-weight'));
-	var total = parseInt($("#bar").attr('data-total-weight'));
-	var percent = weight / total * 100;
-	$("#hoverGrade").width(percent.toString() + "%");
-}, function() {
-	// on leave
-	$("#hoverGrade2").hide();
-	$("#hoverGrade2").text("");
-	$("#hoverGrade2").width(0);
-});*/
-//}
-

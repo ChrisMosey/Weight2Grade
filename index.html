@@ -50,24 +50,6 @@
 		
 	</head>
 	<body>
-<!-- SPLASH VIEW -->
-	<!--	<div data-role="page" id="splash" onload="">
-			<section data-role="content">
-				<h1 style="text-align: center; font-size: 250%; margin:30px 0px 0px 0px"> Weight2Grade </h1>
-				<h1 style="text-align: center; margin: 0px"> loading... </h1>
-			</section>
-			<footer data-role="footer" data-position="fixed" style="height: 66%">
-			<script>
-				setTimeout(function() {$.mobile.loading('show');}, 1);
-				setTimeout(function() {
-					$.mobile.changePage("#homeView", "fade");
-					$.mobile.loading("hide");
-				},1000);
-			</script>
-			</footer>
-		</div>  --> 
-		
-<!-- HOME VIEW -->
 		<div data-role="page" id="homeView">
         	<header data-role="header" style="overflow:hidden" data-position="fixed" data-tap-toggle="false">
            		<h1>Weight2Grade</h1>
@@ -127,7 +109,7 @@
 						<ul data-role="listview" id="completedAssList">
 						</ul>
 					</div>
-					<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-collapsed="false" style="border-radius:0px">
+					<div id="showOnAdd" data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-collapsed="false" style="border-radius:0px">
 						<h3>Outstanding Tasks</h3>
 						<ul data-role="listview" id="outstandingAssList">
 						</ul>
@@ -208,7 +190,7 @@
 				<h1>Weight2Grade</h1>
 				<a href="#classView" data-icon="back" class="ui-btn-left" style="padding-bottom: 5px">Back</a>
 			</header>
-			<section data-role="content" style="margin:-1px">
+			<section data-role="content">
 				<ul data-role="listview" class="addToHead" data-split-icon="edit">
 				</ul>
 				<div class="ui-body ui-body-a ui-corner-all" id="addSpace2">

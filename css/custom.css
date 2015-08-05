@@ -102,15 +102,16 @@ li {
 	cursor: default;
 }
 .addToHead {
+	top: 58px;
 	position:fixed; 
 	width:100%;
-	z-index: 10;
+	z-index: 100;
 }
 #addSpace1 {
-	margin-top: 162px;
+	margin-top: 138px;
 }
 #addSpace2 {
-	margin-top: 137px;
+	margin-top: 138px;
 	padding-top: 10px;
 }
 #editView {
@@ -151,14 +152,14 @@ div.ui-slider > div.ui-slider-track > div.ui-slider-bg {
 	font-weight: normal;
 }
 .circle ~ strong {
-	display: inline-block;
-	line-height: 27px;
-	margin-left: -20px;
-	margin-top: 4px;
-}
-.circle ~ strong span {
-	font-size: 125%;
-	vertical-align: middle;
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 92px;
+	width: 115px;
+	text-align: right;
+	line-height: 172px;
 }
 div.ui-block-b > div.ui-slider {
 	width: 100%;
